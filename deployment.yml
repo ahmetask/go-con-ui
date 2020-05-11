@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gocon-ui
+  labels:
+    app: gocon-ui
+spec:
+  selector:
+    matchLabels:
+      app: gocon-ui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gocon-ui
+    spec:
+      containers:
+        - name: master
+          image: gocon-ui
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 8085

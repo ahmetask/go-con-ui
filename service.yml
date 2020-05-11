@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gocon-ui
+  labels:
+    app: gocon-ui
+spec:
+  type: NodePort
+  ports:
+    - port: 8085
+      targetPort: 80
+      nodePort: 30022 # you can access this ui with kubernetes-ip:30022
+      name: client
+  selector:
+    app: gocon-ui
